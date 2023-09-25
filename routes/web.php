@@ -19,3 +19,4 @@ Route::get('/', function () {
 
 Route::post('/clientes','ClienteController@store');
 Route::get('/clientes/{cliente}','ClienteController@show');
+Route::put('/clientes/{cliente}','ClienteController@update');

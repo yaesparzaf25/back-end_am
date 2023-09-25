@@ -18,5 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::apiResource('clientes',ClienteController::class);
 
 Route::controller(ClienteController::class)->group(function(){
-    Route::post('/clientes/{cliente}','login');
+    Route::post('/clientes/{cliente}','show');
+    Route::put('/clientes/{cliente}','update');
 });
