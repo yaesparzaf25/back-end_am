@@ -31,12 +31,10 @@ class ClienteController extends Controller
         $cliente->apellido = $request->apellido;
         $cliente->edad = $request->edad;
         $cliente->genero = $request->genero;
-        // $cliente->fecha ='no';
-        // $cliente->hora ='no';
         $cliente->created_at=null;
         $cliente->updated_at=null;
         $cliente->save();
-        Log::info('Nuevo cliente agregado: ' . $cliente->nombre . ' ' . $cliente->apellido);
+        // Log::info('Nuevo cliente agregado: ' . $cliente->nombre . ' ' . $cliente->apellido);
         return response()->json(['nombre' => $cliente->nombre, 'response' => 'ok']);
 
     }
@@ -49,9 +47,7 @@ class ClienteController extends Controller
         return response()->json($cliente);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, Cliente $cliente)
     {
         $request->validate([
@@ -67,12 +63,13 @@ class ClienteController extends Controller
     {
         return $cliente;
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Cliente $cliente)
     {
-        //
+        $cliente->fecha = "SF";
+        $cliente->hora = "SF";
+        $cliente->save();
+        Log::info('Lo que se regresa es: ' . $cliente);
+        return response()->json(['response' => 'ok', 'datos' => $cliente]);
     }
+    
 }
