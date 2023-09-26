@@ -35,7 +35,7 @@ class ClienteController extends Controller
         $cliente->updated_at=null;
         $cliente->save();
         // Log::info('Nuevo cliente agregado: ' . $cliente->nombre . ' ' . $cliente->apellido);
-        return response()->json(['nombre' => $cliente->nombre, 'response' => 'ok']);
+        return response()->json(['id' => $cliente->id, 'nombre' => $cliente->nombre,'response' => 'ok']);
 
     }
 
